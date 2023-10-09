@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from 'react';
-
 import RecogAppWrapper from './index.styled';
-
-// mui
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
-
 import { isMobile } from 'react-device-detect';
-
-// tensorflow imports
 import '@tensorflow/tfjs-backend-webgl';
 const mobilenet = require('@tensorflow-models/mobilenet');
 
 export default function RecogApp () {
-  const [model, setModel] = useState(false);
+  const [modelBoolean, setModel] = useState(true);
   const [imageFile, setImageFile] = useState(false);
   const [imagePrediction, setImagePrediction] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleFileInput = (event) => {
     setImagePrediction(false);
-
     if (event.target.files[0]) {
       // converts image to url
       setImageFile(URL.createObjectURL(event.target.files[0]));
@@ -38,11 +31,11 @@ export default function RecogApp () {
   const handlePrediction = async (event) => {
     // clear previous predictions
     setImagePrediction(false);
-
     if (imageFile) {
-
       // run the prediction
+      // console.log(model)
       setLoading(true);
+      const model = await mobilenet.load();
       const recogImage = document.getElementById('recogImage');
       const predictions = await model.classify(recogImage);
       setImagePrediction(predictions);
@@ -52,20 +45,8 @@ export default function RecogApp () {
     }
   }
 
-  // initialisation of model
-  useEffect( () => {
-    async function loadModel () {
-      const model =  mobilenet.load();
-      setModel(model);
-    }
-    loadModel();
-  }, [])
-
   return (
     <RecogAppWrapper>
-    {!model 
-      ? <> <CircularProgress /><br />Loading model...</>
-      : <>
           <div>
             <h1 className='heading'>Image Classifier</h1>
             <p className='us'>A project by Yakshit Chhipa | Abhit Surve | Sanket Shitole | Piyush</p>
@@ -86,7 +67,8 @@ export default function RecogApp () {
             </div>
             { imageFile && <img id='recogImage' className='imageUploadPreview' src={imageFile} alt='Upload be predicted'  />}
           </div>
-          {imageFile && <Button variant="contained" onClick={handlePrediction} loading={loading ? 1 : 0}>Classify </Button>}
+          {imageFile && <Button variant="contained" disabled={loading} onClick={handlePrediction} loading={loading ? 1 : 0}>Classify</Button>}
+          {loading && <><CircularProgress /><br />Loading model...</>}
           {imagePrediction && 
           <div>
             <h2>Predictions</h2>
@@ -98,8 +80,6 @@ export default function RecogApp () {
             }</div>
           </div>
           }
-        </>
-        }
     </RecogAppWrapper>
   );
 }

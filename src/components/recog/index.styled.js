@@ -64,7 +64,7 @@ export const RecogAppWrapper = styled.div`
   .button {
     background-color: white;
     color: black;
-    padding-inline: 5px;
+    padding-inline: 15px;
     padding-block: 2px;
     margin-inline:0.5rem;
     font-size:1rem;
