@@ -55,7 +55,7 @@ export default function RecogApp () {
   // initialisation of model
   useEffect( () => {
     async function loadModel () {
-      const model = await mobilenet.load();
+      const model =  mobilenet.load();
       setModel(model);
     }
     loadModel();
@@ -66,21 +66,18 @@ export default function RecogApp () {
     {!model 
       ? <> <CircularProgress /><br />Loading model...</>
       : <>
-          <a href='https://en.wikipedia.org/wiki/Prometheus' style={{textDecoration: 'none'}} target="_blank noreferrer">
-            <h1 className='appHeader'>Promi</h1>
-          </a>
           <div>
-            An app that recognises what is contained within a provided image <br />
-            <small style={{opacity: 0.75}}>For entertainment purposes only</small> <br /><br />
+            <h1 className='heading'>Image Classifier</h1>
+            <p className='us'>A project by Yakshit Chhipa | Abhit Surve | Sanket Shitole | Piyush</p>
 
             Upload an image below to begin <br />
           </div>
           {/* Image section */}
           <div className='imageUploadWrapper'>
             <div className='imageUploadInput'>
-              <Button onClick={() => document.getElementById('imageUpload').click()} >Upload</Button>
+              <Button className='button' onClick={() => document.getElementById('imageUpload').click()} >Upload</Button>
               {isMobile && <Button onClick={() => document.getElementById('imageCaptureUpload').click()}>Capture</Button>}
-              <Button onClick={clearUserInput} color="error">Clear</Button>
+              <Button onClick={clearUserInput} className='button'>Clear</Button>
 
 
               <input id='imageUpload' type='file' accept='image/*' onChange={handleFileInput} style={{display: 'none'}} />

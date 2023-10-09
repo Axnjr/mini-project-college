@@ -17,7 +17,7 @@ export const RecogAppWrapper = styled.div`
     font-size: 100px;
     margin-top: 0px;
     margin-bottom: 20px;
-    color: ${props => props.theme.accent};
+    color: #FFF01F;
     text-transform: uppercase;
   }
 
@@ -44,8 +44,38 @@ export const RecogAppWrapper = styled.div`
   .predictionItem {
   }
   .firstPrediction {
-    color: green;
+    color: red;
   }
+
+  .us{
+    font-size:1.25rem;
+    font-weight:bold;
+    letter-spacing:.5px;
+  }
+
+  .heading {
+    font-size: 5rem;
+    letter-spacing: -2.5px;
+    font-weight: bold;
+    -webkit-text-stroke-width: 2px;
+    line-height:0.5;
+  }
+
+  .button {
+    background-color: white;
+    color: black;
+    padding-inline: 5px;
+    padding-block: 2px;
+    margin-inline:0.5rem;
+    font-size:1rem;
+  }
+  
+  .button:hover{
+    background-color: #d2e823;
+    border: 2px solid black;
+    color: black;
+  }
+
 `;
 
 export default RecogAppWrapper;

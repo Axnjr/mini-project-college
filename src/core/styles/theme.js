@@ -4,7 +4,7 @@ const globals = {
   // typography!
   fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   
-  fontWeight: '400',
+  fontWeight: '900',
   
   // fonts
   fontBaseSize: `1em`,
@@ -17,7 +17,7 @@ export const styledDarkTheme = {
   ...globals, 
 
   // colors
-  bg: '#212121',
+  bg: 'black',
   fg: 'white',
 
   accent: '#e1a06b',
@@ -29,9 +29,9 @@ export const styledLightTheme = {
 
   // colors
   bg: 'white',
-  fg: '#212121',
+  fg: '#FFF01F',
 
-  accent: '#626ea4',
+  accent: 'black',
 };
 
 // globals for material UI
