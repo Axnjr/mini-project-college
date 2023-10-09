@@ -54,10 +54,10 @@ export const RecogAppWrapper = styled.div`
   }
 
   .heading {
-    font-size: 5rem;
-    letter-spacing: -2.5px;
+    font-size: 3rem;
+    letter-spacing: 0px;
     font-weight: bold;
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 0.5px;
     line-height:0.5;
   }
 
